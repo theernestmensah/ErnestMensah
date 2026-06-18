@@ -12,8 +12,9 @@ require('dotenv').config({
 const PORT = Number(process.env.PORT || 5175);
 const HOST = process.env.HOST || '127.0.0.1';
 const ROOT = path.resolve(__dirname, '..');
-const DATA_DIR = path.join(__dirname, 'data');
-const PROJECTS_FILE = path.join(DATA_DIR, 'projects.json');
+const isVercel = process.env.VERCEL === '1';
+const DATA_DIR = isVercel ? '/tmp' : path.join(__dirname, 'data');
+const PROJECTS_FILE = path.join(__dirname, 'data', 'projects.json');
 const MESSAGES_FILE = path.join(DATA_DIR, 'messages.json');
 const DONATIONS_FILE = path.join(DATA_DIR, 'donations.json');
 const MAX_BODY_BYTES = 100_000;
@@ -239,6 +240,7 @@ async function handlePaystackInitialize(req, res) {
       reference: paystackResponse.data.reference
     });
   } catch (error) {
+    console.error('Paystack initialization error:', error);
     sendJson(res, 502, { error: error.message || 'Unable to start Paystack checkout.' });
   }
 }
@@ -288,6 +290,7 @@ async function handlePaystackVerify(req, res, requestUrl) {
       reference: transaction.reference
     });
   } catch (error) {
+    console.error('Paystack verification error:', error);
     sendJson(res, 502, { error: error.message || 'Unable to verify this Paystack payment.' });
   }
 }
@@ -331,6 +334,7 @@ async function handleContact(req, res) {
     writeJson(MESSAGES_FILE, messages);
     sendJson(res, 201, { ok: true, message: 'Thanks. Your brief has been received.' });
   } catch (error) {
+    console.error('Contact form error:', error);
     sendJson(res, 400, { error: 'Unable to process that message.' });
   }
 }
@@ -396,7 +400,7 @@ function serveStatic(req, res) {
   });
 }
 
-const server = http.createServer((req, res) => {
+const requestHandler = (req, res) => {
   const requestUrl = new URL(req.url, `http://${req.headers.host}`);
 
   if (req.method === 'GET' && requestUrl.pathname === '/api/health') {
@@ -430,8 +434,14 @@ const server = http.createServer((req, res) => {
   }
 
   serveStatic(req, res);
-});
+};
 
-server.listen(PORT, HOST, () => {
-  console.log(`Portfolio server running at http://${HOST}:${PORT}`);
-});
+const server = http.createServer(requestHandler);
+
+if (!isVercel) {
+  server.listen(PORT, HOST, () => {
+    console.log(`Portfolio server running at http://${HOST}:${PORT}`);
+  });
+}
+
+module.exports = requestHandler;
