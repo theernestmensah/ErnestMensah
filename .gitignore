@@ -1,0 +1,9 @@
+.env
+.env.*
+!.env.example
+node_modules/
+npm-debug.log*
+
+# Local contact messages and donations databases
+backend/data/messages.json
+backend/data/donations.json

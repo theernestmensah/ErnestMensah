@@ -1,0 +1,24 @@
+{
+  "name": "ernest-portfolio",
+  "version": "1.0.0",
+  "description": "Premium developer portfolio with a lightweight Node backend, safer contact handling, and conversion-focused project presentation.",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "node backend/server.js",
+    "check": "node --check backend/server.js && node --check javascript/script.js"
+  },
+  "keywords": [
+    "portfolio",
+    "node",
+    "javascript",
+    "security",
+    "frontend"
+  ],
+  "author": "Ernest Abel Nanabanyin Mensah",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "17.4.2",
+    "gsap": "3.13.0"
+  }
+}

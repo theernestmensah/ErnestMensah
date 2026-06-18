@@ -1,0 +1,35 @@
+[
+  {
+    "title": "Great Key Educational Consult",
+    "category": "Education Website",
+    "role": "Front-end build, layout polish, and responsive experience.",
+    "description": "An education services website for home tuition, vacation classes, and homeschooling, built with clear navigation and a responsive user experience.",
+    "image": "greatkey_screenshot.png",
+    "demoUrl": "https://www.greatkeyeducationalconsult.org",
+    "codeUrl": "",
+    "outcomes": ["Clear service journey", "Mobile-friendly pages", "Live client brand"],
+    "tags": ["HTML", "CSS", "JavaScript", "Education"]
+  },
+  {
+    "title": "Alpha & Omega Publications Ltd.",
+    "category": "Printing & Publishing",
+    "role": "Business website presentation, responsive layout, and service-focused content structure.",
+    "description": "A polished business website for a printing and publishing company, presenting premium print services with a stronger first impression.",
+    "image": "media/alpha-omega-screenshot.png",
+    "demoUrl": "https://www.alphaandomegapublications.com",
+    "codeUrl": "",
+    "outcomes": ["Premium service positioning", "Responsive layout", "Direct ordering path"],
+    "tags": ["Business Website", "Printing", "Publishing", "Responsive"]
+  },
+  {
+    "title": "Joseph Ekow Mensah Memorial",
+    "category": "Digital Memorial",
+    "role": "Memorial website experience with tribute, gallery, service, and candle-lighting sections.",
+    "description": "A private digital memorial built with dignity, tribute content, a gallery experience, and ceremony details for family and friends.",
+    "image": "media/joseph-ekow-mensah-screenshot.png",
+    "demoUrl": "https://josephekowmensah.com",
+    "codeUrl": "",
+    "outcomes": ["Tribute-led content", "Gallery structure", "Ceremonial experience"],
+    "tags": ["Memorial Website", "Tributes", "Gallery", "Responsive"]
+  }
+]
