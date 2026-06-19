@@ -5,7 +5,7 @@ const fs = require('fs');
 const path = require('path');
 
 require('dotenv').config({
-  path: path.resolve(__dirname, '..', '.env'),
+  path: path.join(__dirname, '..', '.env'),
   quiet: true
 });
 
@@ -13,8 +13,8 @@ const PORT = Number(process.env.PORT || 5175);
 const HOST = process.env.HOST || '127.0.0.1';
 const ROOT = path.resolve(__dirname, '..');
 const isVercel = process.env.VERCEL === '1';
-const DATA_DIR = isVercel ? '/tmp' : path.join(__dirname, 'data');
-const PROJECTS_FILE = path.join(__dirname, 'data', 'projects.json');
+const DATA_DIR = isVercel ? '/tmp' : path.join(__dirname, '..', 'backend', 'data');
+const PROJECTS_FILE = path.join(__dirname, '..', 'backend', 'data', 'projects.json');
 const MESSAGES_FILE = path.join(DATA_DIR, 'messages.json');
 const DONATIONS_FILE = path.join(DATA_DIR, 'donations.json');
 const MAX_BODY_BYTES = 100_000;

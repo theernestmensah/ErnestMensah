@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node backend/server.js",
     "dev": "node backend/server.js",
-    "check": "node --check backend/server.js && node --check javascript/script.js"
+    "check": "node --check backend/server.js && node --check api/index.js && node --check javascript/script.js"
   },
   "keywords": [
     "portfolio",
